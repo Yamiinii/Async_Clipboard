@@ -1,0 +1,51 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 16px;
+}
+h2 {
+    color: #444;
+    font-weight: 500;
+}
+button, input[type="file"], textarea {
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+button:hover {
+    background-color: #0056b3;
+}
+input[type="file"] {
+    cursor: pointer;
+    background-color: #fff;
+}
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+#output {
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+    }
+    textarea, #output {
+        width: 100%;
+    }
+}

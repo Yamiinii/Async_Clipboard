@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Clipboard Magic ✨</title> <!-- Updated title -->
+<style>
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 20px;
+        background-color: #e0e0e0; /* Updated background color */
+        color: #333;
+        font-size: 16px;
+    }
+    h2 {
+        color: #444;
+        font-weight: 500;
+    }
+    button, input[type="file"], textarea {
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    input[type="file"] {
+        cursor: pointer;
+        background-color: #fff;
+    }
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #output {
+        background-color: #fff;
+        padding: 15px;
+        margin-top: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+        body {
+            margin: 10px;
+        }
+        textarea, #output {
+            width: 100%;
+        }
+    }
+  
+</style>
+</head>
+<body>
+<h2>✨ Clipboard Magic ✨</h2> <!-- Updated heading -->
+
+<div>
+  <button id="copyTextButton">Copy Text</button>
+  <button id="copyHtmlButton">Copy HTML</button>
+  <div>
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="copyImageButton">Copy Image</button>
+  </div>
+  <div>
+    <input type="file" id="audioInput" accept="audio/*">
+    <button id="copyAudioButton">Copy Audio</button>
+  </div>
+  <div>
+    <input type="file" id="videoInput" accept="video/*">
+    <button id="copyVideoButton">Copy Video</button>
+  </div>
+  <textarea id="pasteArea" placeholder="Paste here using Ctrl+V" rows="5" cols="50"></textarea>
+    <div id="output"></div>
+</div>
+
+<!-- JavaScript remains unchanged -->
+<script>
+    document.getElementById('copyTextButton').addEventListener('click', async () => {
+            try {
+                const text = 'Hello, pickled world!';
+                const textBlob = new Blob([text], { type: 'ppt/plain' });
+                const clipboardItem = new ClipboardItem({ 'web ppt/plain': textBlob });
+                await navigator.clipboard.write([clipboardItem]);
+                alert('Custom format copied to clipboard');
+            } catch (err) {
+                console.error('Failed to copy Custom format: ', err);
+            }
+        });
+
+const image_button = document.getElementById('copyImageButton');
+const imageInput = document.getElementById('imageInput');
+document.getElementById('copyImageButton').addEventListener('click', async () => {
+    try {
+        const image= "image to be converted into gvml";
+        const imageBlob = new Blob([image], { type: 'image/png' });
+        const clipboardItem = new ClipboardItem({ 'web image/png': imageBlob });
+        await navigator.clipboard.write([clipboardItem]);
+        alert('image copied to clipboard');
+    } catch (err) {
+        console.error('Failed to copy image to clipboard: ', err);
+    }
+});
+
+const audio_button = document.getElementById('copyAudioButton');
+const audioInput = document.getElementById('audioInput');
+document.getElementById('copyAudioButton').addEventListener('click', async () => {
+    try {
+        const audio = "audio to be converted into gvml";
+        const audioBlob = new Blob([audio], { type: 'audio/mpeg' });
+        const clipboardItem = new ClipboardItem({ 'web audio/mpeg': audioBlob });
+        await navigator.clipboard.write([clipboardItem]);
+        alert('Audio copied to clipboard');
+    } catch (err) {
+        console.error('Failed to copy audio to clipboard: ', err);
+    }
+});
+
+const video_button = document.getElementById('copyVideoButton');
+const videoInput = document.getElementById('videoInput');
+document.getElementById('copyVideoButton').addEventListener('click', async () => {
+    try {
+        const video = "video to be converted into gvml";
+        const videoBlob = new Blob([video], { type: 'video/mp4' });
+        const clipboardItem = new ClipboardItem({ 'web video/mp4': videoBlob });
+        await navigator.clipboard.write([clipboardItem]);
+        alert('Video copied to clipboard');
+    } catch (err) {
+        console.error('Failed to copy video to clipboard: ', err);
+    }
+});
+
+document.getElementById('copyHtmlButton').addEventListener('click', async () => {
+        try {
+            const htmlContent = '<p>Hello, <strong>world!</strong></p>';
+            const htmlBlob = new Blob([htmlContent], { type: 'text/html' });
+            const clipboardItem = new ClipboardItem({ 'text/html': htmlBlob });
+            await navigator.clipboard.write([clipboardItem]);
+            alert('HTML copied to clipboard');
+        } catch (err) {
+            console.error('Failed to copy HTML: ', err);
+        }
+    });
+
+    document.getElementById('pasteArea').addEventListener('paste', async (event) => {
+    event.preventDefault();  // Prevent the default paste action
+
+    let pastedText = ''; // Initialize variables to store pasted content
+    let pastedImage = '';
+    let pastedAudio = '';
+    let pastedVideo = '';
+    let pastedHTML = '';
+
+    // Read the clipboard items
+    const clipboardItems = await navigator.clipboard.read();
+
+    for (const clipboardItem of clipboardItems) {
+        // Iterate over each type in the clipboard item
+        for (const type of clipboardItem.types) {
+            // Get the blob data for the type
+            const blob = await clipboardItem.getType(type);
+            // Convert the blob data to text
+            const data = await blob.text();
+            
+            // Check if the type starts with 'web ' and handle it
+            if (type.startsWith('web ')) {
+                // Get the format without 'web ' prefix
+                const format = type.slice(4);
+                // Store or process the data based on format
+                switch (format) {
+                    case 'text/plain':
+                        pastedText = data;
+                        break;
+                    case 'image/png':
+                        pastedImage = data;
+                        break;
+                    case 'audio/mpeg':
+                        pastedAudio = data;
+                        break;
+                    case 'video/mp4':
+                        pastedVideo = data;
+                        break;
+                    // Add more cases as needed
+                }
+            } else if (type === 'text/html') {
+                pastedHTML = data;
+                break; // Ensure we exit the loop after handling HTML content
+            }
+        }
+    }
+
+
+    // Update the output with the pasted content
+    document.getElementById('output').innerHTML = `
+        <h3>Pasted Content:</h3>
+        <div>
+          <p><strong>Text:</strong> ${pastedText}</p>
+          <p><strong>Audio:</strong> ${pastedAudio}</p>
+          <p><strong>Video:</strong> ${pastedVideo}</p>
+          <p><strong>Image:</strong> ${pastedImage}</p>
+          <p><strong>HTML:</strong> ${pastedHTML}</p>
+        </div>
+    `;
+});
+
+</script>
+</body>
+</html>

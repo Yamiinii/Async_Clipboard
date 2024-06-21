@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Clipboard Magic ✨</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h2>✨ Clipboard Magic ✨</h2>
+
+<div>
+  <button id="copyTextButton">Copy Text</button>
+  <button id="copyHtmlButton">Copy HTML</button>
+  <div>
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="copyImageButton">Copy Image</button>
+  </div>
+  <div>
+    <input type="file" id="audioInput" accept="audio/*">
+    <button id="copyAudioButton">Copy Audio</button>
+  </div>
+  <div>
+    <input type="file" id="videoInput" accept="video/*">
+    <button id="copyVideoButton">Copy Video</button>
+  </div>
+  <textarea id="pasteArea" placeholder="Paste here using Ctrl+V" rows="5" cols="50"></textarea>
+    <div id="output"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
