@@ -18,9 +18,12 @@ To get started with this project, you'll need to have Node.js and TypeScript ins
 git clone https://github.com/Yamiinii/Async_Clipboard.git
 cd Async_Clipboard
 npm install
+```
 
 You can refer to the following images:
-![image (1)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/bc027b00-92cd-4f40-afb3-772c571eab78)
-![Screenshot (44)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/75d54867-de24-4dce-bc4d-91ba97d2fea7)
-![Screenshot (43)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/88040da2-4c0b-43fd-8333-ac9691671829)
-![Screenshot (42)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/113ee018-6c49-48b8-86da-36adef252760)
+
+![image (1)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/b7d17268-4869-4abf-8f8b-1f5fe69d897d)
+![Screenshot (43)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/664d6a2d-50bc-402f-af1a-6ddfe51a88c6)
+![Screenshot (42)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/5ef923b9-7515-476d-ab36-1144b8087211)
+![Screenshot (44)](https://github.com/Yamiinii/Async_Clipboard/assets/95957635/48d3f7f5-e887-4702-80e8-8320ef61e2df)
+
